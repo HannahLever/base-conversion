@@ -58,24 +58,27 @@ def get_base(message):
             print("Unsupported base, please try again.")
     return base
 
-print("Welcome to Hannah's integer base converter!\nSupported bases: 2-10\n")
+def main():
+    print("Welcome to Hannah's integer base converter!\nSupported bases: 2-10\n")
 
-start_base = get_base("Initial base: ")
-end_base = get_base("Desired base: ")
+    start_base = get_base("Initial base: ")
+    end_base = get_base("Desired base: ")
 
-valid_input = False
-while valid_input == False:
-    try:
-        start_int = int(input("Integer to convert: "))
-    except ValueError:
-        print("Not a valid integer, please try again.")
-        continue
-    if not base_check(start_base, start_int):
-        print("Not a valid integer in initial base, please try again.")
-    else:
-        valid_input = True
+    valid_input = False
+    while valid_input == False:
+        try:
+            start_int = int(input("Integer to convert: "))
+        except ValueError:
+            print("Not a valid integer, please try again.")
+            continue
+        if not base_check(start_base, start_int):
+            print("Not a valid integer in initial base, please try again.")
+        else:
+            valid_input = True
 
-dec = to_dec(start_base, start_int)
-result = from_dec(end_base, dec)
+    dec = to_dec(start_base, start_int)
+    result = from_dec(end_base, dec)
 
-print(f"Result: {result}")
+    print(f"Result: {result}")
+
+main();
