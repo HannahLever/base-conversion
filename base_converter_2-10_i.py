@@ -32,4 +32,12 @@ def from_dec(base, num):
     result = sign * int(result)
     return result
 
+def base_check(base, num):
+    # check each digit: if greater than highest digit of base return False
+    while num > 0:
+        if num % 10 > base - 1:
+            return False
+        num = num // 10
+    #else: true
+    return True
 
