@@ -62,3 +62,12 @@ def from_dec(base, num):
     result = sign + result
     return result
 
+def base_check(base, num):
+    # check each digit: if greater than highest digit of base return False
+    while len(num) > 0:
+        if parse_digit(num[-1]) > base - 1:
+            return False
+        num = num[:-1]
+    #else: true
+    return True
+
