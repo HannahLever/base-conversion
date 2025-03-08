@@ -15,11 +15,33 @@ def parse_digit(digit):
         return -1
 
 # take int, return character
-def encode_digit(digit)
+def encode_digit(digit):
     if digit >= 0 and digit <= 9:
         return str(digit)
-    else if digit >= 10 and digit <= 35:
+    elif digit >= 10 and digit <= 35:
         return chr(digit + 87)
     else:
         print("ERROR: Value is less than 0 or greater than 35, cannot be converted")
         return -1
+
+# take target base and origin num (as string), return int
+def to_dec(base, num):
+    # store -/+ to treat num as positive through calculations
+    if num[0] == '-':
+        sign = -1
+        num = num[1:]
+    else:
+        sign = 1
+    # multiply each digit by place value, sum with previous digit values
+    result = 0
+    mult = 1
+    while len(num) > 0:
+        result += parse_digit(num[-1]) * mult
+        num = num[:-1]
+        mult = mult * base
+
+    # restore -/+
+    result = sign * result
+    return result
+
+
