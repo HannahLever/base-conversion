@@ -18,4 +18,20 @@ def to_dec(base, num):
     result = result * sign
     return int(result)
 
+def from_dec(base, num):
+    # store - if negative to treat num as positive in calculation
+    sign = ""
+    if num < 0:
+        sign = "-"
+    num = abs(num)
+    
+    result = ""
+    while num > 0:
+        result = str(num % base) + result
+        num = num // base
 
+    # restore - if starting integer was negative
+    result = sign + result
+    return result
+
+print(from_dec(4, 675))
