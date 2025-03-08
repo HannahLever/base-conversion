@@ -41,3 +41,21 @@ def base_check(base, num):
     #else: true
     return True
 
+def get_base(message):
+    valid_input = False
+    while valid_input == False:
+        try:
+            base = int(input(message))
+        except ValueError:
+            print("Not a valid integer, please try again.")
+            continue
+        if base <= 10 and base > 0:
+            valid_input = True
+        else:
+            print("Unsupported base, please try again.")
+    return base
+
+print("Welcome to Hannah's integer base converter!\nSupported bases: 1-10\n")
+
+start_base = get_base("Which base would you like to convert from? ")
+end_base = get_base("Which base would you like to convert to? ")
