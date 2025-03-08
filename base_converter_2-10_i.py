@@ -49,14 +49,13 @@ def get_base(message):
         except ValueError:
             print("Not a valid integer, please try again.")
             continue
-        if base <= 10 and base > 0:
+        if base <= 10 and base > 1:
             valid_input = True
         else:
             print("Unsupported base, please try again.")
     return base
 
-print("Welcome to Hannah's integer base converter!\nSupported bases: 1-10\n")
-
+print("Welcome to Hannah's integer base converter!\nSupported bases: 2-10\n")
 
 start_base = get_base("Initial base: ")
 end_base = get_base("Desired base: ")
@@ -72,3 +71,8 @@ while valid_input == False:
         print("Not a valid integer in initial base, please try again.")
     else:
         valid_input = True
+
+dec = to_dec(start_base, start_int)
+result = from_dec(end_base, dec)
+
+print(f"Result: {result}")
