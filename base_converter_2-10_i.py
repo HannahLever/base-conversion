@@ -4,7 +4,7 @@
 
 def to_dec(base, num):
     # store -/+ to treat num as positive through calculations
-    sign = num / abs(num)
+    sign = int(num / abs(num))
     num = abs(num)
 
     result = 0
@@ -15,14 +15,12 @@ def to_dec(base, num):
         mult = mult * base
 
     # restore -/+
-    result = result * sign
-    return int(result)
+    result = sign * result
+    return result
 
 def from_dec(base, num):
-    # store - if negative to treat num as positive in calculation
-    sign = ""
-    if num < 0:
-        sign = "-"
+    # store -/+ to treat num as positive through calculations
+    sign = int(num / abs(num))
     num = abs(num)
     
     result = ""
@@ -31,7 +29,7 @@ def from_dec(base, num):
         num = num // base
 
     # restore - if starting integer was negative
-    result = sign + result
+    result = sign * int(result)
     return result
 
-print(from_dec(4, 675))
+
