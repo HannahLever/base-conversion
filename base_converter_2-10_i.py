@@ -57,5 +57,18 @@ def get_base(message):
 
 print("Welcome to Hannah's integer base converter!\nSupported bases: 1-10\n")
 
-start_base = get_base("Which base would you like to convert from? ")
-end_base = get_base("Which base would you like to convert to? ")
+
+start_base = get_base("Initial base: ")
+end_base = get_base("Desired base: ")
+
+valid_input = False
+while valid_input == False:
+    try:
+        start_int = int(input("Integer to convert: "))
+    except ValueError:
+        print("Not a valid integer, please try again.")
+        continue
+    if not base_check(start_base, start_int):
+        print("Not a valid integer in initial base, please try again.")
+    else:
+        valid_input = True
