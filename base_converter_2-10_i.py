@@ -1,12 +1,14 @@
 # Author: Hannah Lever
-# Date: 7\8 Mar 2025
 # Hannah's Base Converter: Integers of Bases 2-10
+
+# TODO: handle input of 0
 
 def to_dec(base, num):
     # store -/+ to treat num as positive through calculations
     sign = int(num / abs(num))
     num = abs(num)
 
+    # multiply each digit by place value, sum with previous digit values
     result = 0
     mult = 1
     while num > 0:
@@ -22,7 +24,8 @@ def from_dec(base, num):
     # store -/+ to treat num as positive through calculations
     sign = int(num / abs(num))
     num = abs(num)
-    
+
+    # use remainder method to get each digit, starting with greatest value
     result = ""
     while num > 0:
         result = str(num % base) + result
@@ -49,7 +52,7 @@ def get_base(message):
         except ValueError:
             print("Not a valid integer, please try again.")
             continue
-        if base <= 10 and base > 1:
+        if base <= 10 and base > 1:     # check that base is supported
             valid_input = True
         else:
             print("Unsupported base, please try again.")
