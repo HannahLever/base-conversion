@@ -110,4 +110,5 @@ def main():
 
     print(f"Result: {result}")
 
-main()
+if __name__ == "__main__":
+    main()
