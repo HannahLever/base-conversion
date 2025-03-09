@@ -18,7 +18,7 @@ def parse_digit(digit):
 def encode_digit(digit):
     if digit >= 0 and digit <= 9:
         return str(digit)
-    elif digit >= 10 and digit <= 35:
+    elif digit >= 10 and digit <= 36:
         return chr(digit + 87)
     else:
         print("ERROR: Value is less than 0 or greater than 35, cannot be converted")
@@ -72,7 +72,7 @@ def base_check(base, num):
     #else: true
     return True
 
-# take input with prompt message, check that input is a valid base
+# take input with prompt message, check that input is a valid base, return as int
 def get_base(message):
     valid_input = False
     while valid_input == False:
@@ -81,10 +81,29 @@ def get_base(message):
         except ValueError:
             print("Not a valid integer, please try again.")
             continue
-        if base > 1 and base <= 35:     # check that base is supported
+        if base > 1 and base <= 36:     # check that base is supported
             valid_input = True
         else:
             print("Unsupported base, please try again.")
     return base
 
+def main():
+    print("Welcome to Hannah's integer base converter!\nSupported bases: 2-36\n")
 
+    start_base = get_base("Initial base: ")
+    end_base = get_base("Desired base: ")
+
+    valid_input = False
+    while valid_input == False:
+        start_num = input("Integer to convert: ")
+        if not base_check(start_base, start_num):
+            print("Not a valid integer in initial base, please try again.")
+        else:
+            valid_input = True
+
+    dec = to_dec(start_base, start_num)
+    result = from_dec(end_base, dec)
+
+    print(f"Result: {result}")
+
+main();
