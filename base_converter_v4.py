@@ -18,7 +18,7 @@ def parse_digit(digit):
 def encode_digit(digit):
     if digit >= 0 and digit <= 9:
         return str(digit)
-    elif digit >= 10 and digit <= 36:
+    elif digit >= 10 and digit <= 35:
         return chr(digit + 87)
     else:
         print("ERROR: Value is less than 0 or greater than 35, cannot be converted")
@@ -64,9 +64,13 @@ def from_dec(base, num):
 
 # check that str num is valid in base
 def base_check(base, num):
-    # check each digit: if greater than highest digit of base return False
+    # strip sign
+    if num[0] == '-':
+        num = num[1:]
+    # check each character: if not a digit or if a digit not in current base: return false 
     while len(num) > 0:
-        if parse_digit(num[-1]) > base - 1:
+        cur_digit = parse_digit(num[-1])
+        if cur_digit == -1 or cur_digit > base - 1:
             return False
         num = num[:-1]
     #else: true
@@ -106,4 +110,4 @@ def main():
 
     print(f"Result: {result}")
 
-main();
+main()
