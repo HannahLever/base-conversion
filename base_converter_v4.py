@@ -62,6 +62,7 @@ def from_dec(base, num):
     result = sign + result
     return result
 
+# check that str num is valid in base
 def base_check(base, num):
     # check each digit: if greater than highest digit of base return False
     while len(num) > 0:
@@ -70,4 +71,20 @@ def base_check(base, num):
         num = num[:-1]
     #else: true
     return True
+
+# take input with prompt message, check that input is a valid base
+def get_base(message):
+    valid_input = False
+    while valid_input == False:
+        try:
+            base = int(input(message))
+        except ValueError:
+            print("Not a valid integer, please try again.")
+            continue
+        if base > 1 and base <= 35:     # check that base is supported
+            valid_input = True
+        else:
+            print("Unsupported base, please try again.")
+    return base
+
 
